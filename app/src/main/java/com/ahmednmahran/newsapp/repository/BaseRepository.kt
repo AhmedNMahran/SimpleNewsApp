@@ -6,6 +6,7 @@ import java.io.IOException
 
 /**
  * Created by Ahmed Nabil on 2019-07-10.
+ * A base repository class to handle the safe API calls.
  */
 open class BaseRepository {
     suspend fun <T : Any> safeApiCall(call : suspend()-> Response<T>, error : String) :  T?{
