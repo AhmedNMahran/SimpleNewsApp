@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object NewsApiService {
     //creating a Network Interceptor to add api_key in all the request as authInterceptor
     private val interceptor = Interceptor { chain ->
-        val API_KEY = "ADD_YOUR_KEY_HERE" // get your API_KEY from newsapi.org
+        val API_KEY = "YOUR_KEY_HERE" // get your API_KEY from newsapi.org
         //here we add API key so we don't need to add it to each request method we create.
         val url = chain.request().url().newBuilder().addQueryParameter("apiKey", API_KEY).build()
         val request = chain.request()

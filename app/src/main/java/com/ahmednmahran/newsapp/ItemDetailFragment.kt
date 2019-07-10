@@ -43,9 +43,10 @@ class ItemDetailFragment : androidx.fragment.app.Fragment() {
         // Show the dummy content as text in a TextView.
         item?.let {
             rootView.text_detail.text = """
+                ${it.title}
+
                 ${it.content}
-                ${it.description}
-                """.trimIndent()
+                """
             Picasso.get().load(it.urlToImage).error(R.mipmap.ic_launcher)
                 .placeholder(R.mipmap.ic_launcher)
                 .into(rootView.img_detail)
