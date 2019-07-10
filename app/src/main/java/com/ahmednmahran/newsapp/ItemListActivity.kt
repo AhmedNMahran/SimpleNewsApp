@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
@@ -37,17 +38,18 @@ class ItemListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_list)
-//create instance of view model factory
+        //create instance of view model factory
         val viewModelFactory = NewsViewModelFactory()
-        //Use view ModelFactory to initialize view model
+        // Use view ModelFactory to initialize view model
         val newsViewModel = ViewModelProviders.of(this@ItemListActivity, viewModelFactory)
             .get(NewsViewModel::class.java)
         //get latest news from view model
         newsViewModel.getLatestNews()
-        //observe viewModel live data
+        // Observe viewModel live data
         newsViewModel.newsLiveData.observe(this, Observer {
-            //bind your ui here
+            //Bind your ui here
             setupRecyclerView(item_list, it)
+            progress.visibility = GONE
         })
 
 
